@@ -58,30 +58,24 @@ int main()
 
 	//一级偏移
 	DWORDLONG OffsetFirstValue = 0;
-	if (0 == ReadProcessMemory(hProcess, (LPVOID)(runeAddressStart), &OffsetFirstValue, sizeof(DWORD), &dwSize))
+	if (0 == ReadProcessMemory(hProcess, (LPVOID)(runeAddressStart), &OffsetFirstValue, sizeof(DWORDLONG), &dwSize))
 	{
 		printf_s("一级偏移获取失败\n");
 		getLastError = GetLastError();
 	}
 	cout << "一级偏移后值" << (LPVOID)OffsetFirstValue << endl;
-	//修饰一级偏移
-	OffsetFirstValue = (DWORDLONG)OffsetFirstValue + 0x7FF300000000;
-	cout << "一级偏移后值(修饰)" << (LPVOID)OffsetFirstValue << endl;
 
 	//二级偏移
 	DWORDLONG OffsetSecondValue = 0;
-	if (0 == ReadProcessMemory(hProcess, (LPVOID)(OffsetFirstValue + offset1), &OffsetSecondValue, sizeof(DWORD), &dwSize))
+	if (0 == ReadProcessMemory(hProcess, (LPVOID)(OffsetFirstValue + offset1), &OffsetSecondValue, sizeof(DWORDLONG), &dwSize))
 	{
 		printf_s("二级偏移获取失败\n");
 		getLastError = GetLastError();
 	}
 	cout << "二级偏移后值" << (LPVOID)OffsetSecondValue << endl;
-	//修饰二级偏移
-	OffsetSecondValue = (DWORDLONG)OffsetSecondValue + 0x7FF300000000;
-	cout << "二级偏移后值(修饰)" << (LPVOID)OffsetSecondValue << endl;
 
 	//三级偏移
-	DWORDLONG RuneNum = 0;
+	DWORD RuneNum = 0;
 	if (0 == ReadProcessMemory(hProcess, (LPVOID)(OffsetSecondValue + offset2), &RuneNum, sizeof(DWORD), &dwSize))
 	{
 		printf_s("三级偏移获取失败\n");

@@ -1,6 +1,7 @@
-# EldenRingChangeRune
+# EldenRingChangeRune（v1.02）
 艾尔登法环 修改卢恩数值  
-自己的一个简单逆向开发练习   
+自己的一个简单逆向开发练习 
+### 更新后内存地址已发生变化，该程序已失效，仅供参考学习：https://blog.csdn.net/qq_40432713/article/details/123831451  
 
 通过CE找到卢恩位置，经过了三次偏移计算。  
 
